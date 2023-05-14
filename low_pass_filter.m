@@ -6,3 +6,5 @@ if (filter_type==0)
 else
     [a,b]=butter(order,wn);
 end
+
+end
