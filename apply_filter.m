@@ -1,13 +1,15 @@
 function result = apply_filter(filter_type, gains, audio_data, sample_rate)
     % Define frequency ranges for each band
+    disp(filter_type)
     freq1 = [0, 170, 300, 610, 1005, 3000, 6000, 12000, 14000];
     freq2 = [170, 300, 610, 1005, 3000, 6000, 12000, 14000, 20000];
+    filter_order=0;
     
     % Set filter order based on filter type
     if filter_type == "FIR"
         filter_order = 600;
-    else
-        filter_order = 8;
+    elseif filter_type== "IIR"
+        filter_order = 4;
     end
 
     % Apply low-pass filter to the audio data for the first band
