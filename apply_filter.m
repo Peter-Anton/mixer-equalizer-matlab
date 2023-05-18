@@ -19,7 +19,7 @@ function result = apply_filter(filter_type, gains, audio_data, sample_rate)
     for i = 2:9
         [a, b] = band_pass_filter(sample_rate, freq1(i), freq2(i), filter_order, filter_type);
         filtered_data = filter(a, b, audio_data);
-        result = audio_data * gains(i);
+        result = result + filtered_data * gains(i);
     end
 end
 

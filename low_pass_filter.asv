@@ -4,9 +4,9 @@ function [a,b] = low_pass_filter(samplerate, cutoffFreq, order, filter)
   
     if (filter == "FIR")
         [a, b] = fir1(order, wn, 'low');
-        [a, b] = eqtflength(a, b);
+        [b, a] = eqtflength(b,a);
     else
         [a, b] = butter(order, wn);
-        [a, b] = eqtflength(a, b);
+        [b, a] = eqtflength(b,a);
     end
 end
