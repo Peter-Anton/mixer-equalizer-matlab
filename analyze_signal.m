@@ -17,20 +17,20 @@ function analyze_signal = analyze_signal(samplerate, filter_type, audidata)
     
     % Filter analysis
     figure();
-    subplot(2, 1, 1);
     freqz(a, b, num_samples);
     title('Magnitude and phase of input frequency (0-170)');
     
-    subplot(2, 1, 2);
-    pzmap(tf);
+    figure();
+    subplot(3, 1, 1);
+    pzmap(TF);
     title('Poles and zeros of low pass filtered signal (0-170)');
     
-    figure();
-    subplot(2, 1, 1);
+    
+    subplot(3, 1, 2);
     impulse(TF);
     title('Impulse response of low pass filtered signal (0-170)');
     
-    subplot(2, 1, 2);
+    subplot(3, 1, 3);
     step(TF);
     title('Step response of low pass filtered signal (0-170)');
     
@@ -57,21 +57,19 @@ function analyze_signal = analyze_signal(samplerate, filter_type, audidata)
         
         % Filter analysis
         figure();
-        subplot(2, 1, 1);
         freqz(a, b, num_samples);
         range = strcat(' (', int2str(freq1(i)), 'Hz - ', int2str(freq2(i)), 'Hz)');
         title(strcat('Magnitude & Phase of H', int2str(i), '(Z)', range));
-        
-        subplot(2, 1, 2);
-        pzmap(tf);
+        figure();
+        subplot(3, 1, 1);
+        pzmap(TF);
         title(strcat('Poles and zeros', int2str(i), '(Z)', range));
         
-        figure();
-        subplot(2, 1, 1);
+        subplot(3, 1, 2);
         impulse(TF);
         title(strcat('Impulse response', int2str(i), '(Z)', range));
         
-        subplot(2, 1, 2);
+        subplot(3, 1, 3);
         step(TF);
         title(strcat('Step response', int2str(i), '(Z)', range));
         
